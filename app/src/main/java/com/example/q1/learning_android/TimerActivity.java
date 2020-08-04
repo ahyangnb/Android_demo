@@ -65,14 +65,14 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void run() {
                 super.run();
-                int i = 0;
+                int i = -1;
                 while (flag) {
                     try {
-                        sleep(1000);
                         i++;
                         Message msg = new Message();
                         msg.arg1 = i;
                         handler.sendMessage(msg);
+                        sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
