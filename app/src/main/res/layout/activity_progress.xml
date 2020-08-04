@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Progress">
+
+    <ProgressBar
+        android:id="@+id/p1"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/p2"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:progress="35" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="模拟" />
+
+    <Button
+        android:id="@+id/progressDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="progressDialog" />
+
+    <Button
+        android:id="@+id/progressDownLoadDialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="progressDownLoadDialog" />
+
+</LinearLayout>

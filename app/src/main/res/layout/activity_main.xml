@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:replace="android:appComponentFactory"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/bt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="跳转" />
+
+    <Button
+        android:id="@+id/bt2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="水平滚动" />
+
+    <Button
+        android:id="@+id/bt_web"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="webView" />
+
+    <Button
+        android:id="@+id/bt_constraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="constraint" />
+
+    <Button
+        android:id="@+id/bt_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="dialog" />
+
+    <Button
+        android:id="@+id/bt_this_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This_dialog" />
+    <Button
+        android:id="@+id/bt_listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="ListViewActivity" />
+    <Button
+        android:id="@+id/bt_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="ProgressActivity" />
+
+    <Button
+        android:id="@+id/bt_net"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="NetWork" />
+
+    <Button
+        android:id="@+id/bt_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="计时器" />
+
+</LinearLayout>

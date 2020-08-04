@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">learning_android</string>
+    <string name="title_activity_timer">TimerActivity</string>
+</resources>
