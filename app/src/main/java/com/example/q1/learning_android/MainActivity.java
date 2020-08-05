@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         bt_progress.setOnClickListener(new ClickHandle());
         bt_net.setOnClickListener(new ClickHandle());
         bt_timer.setOnClickListener(new ClickHandle());
+        bt_async.setOnClickListener(new ClickHandle());
 
     }
 
@@ -95,6 +96,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.bt_timer:
                     intent = new Intent(MainActivity.this, TimerActivity.class);
+                    break;
+                case R.id.bt_async:
+                    intent = new Intent(MainActivity.this, AsyncActivity.class);
                     break;
             }
             if (v.getId() != R.id.bt_net && v.getId() != R.id.bt1) {
