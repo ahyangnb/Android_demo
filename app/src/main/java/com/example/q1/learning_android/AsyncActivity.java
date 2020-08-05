@@ -42,16 +42,20 @@ public class AsyncActivity extends AppCompatActivity {
     class MyOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
-            try {
-                switch (v.getId()) {
-                    case R.id.start:
-                        pTask.execute();
-                        break;
-                    case R.id.end:
-                        pTask.cancel(true);
-                        break;
-                }
-            } catch (Exception ignored) {
+            switch (v.getId()) {
+                case R.id.start:
+                    if (pTask.isCancelled()) {
+                        pTask = new ProgressTask();
+                    }
+                    pTask.execute();
+                    break;
+                case R.id.end:
+                    if (progress.getProgress() == 100) {
+                        txt.setText("已经完成了哦");
+                        return;
+                    }
+                    pTask.cancel(true);
+                    break;
             }
         }
     }
@@ -111,6 +115,7 @@ public class AsyncActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             txt.setText("加载完成");
+            pTask = new ProgressTask();
         }
 
         //取消异步时触发
