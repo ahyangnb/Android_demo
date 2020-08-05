@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:label">
-        <activity android:name=".TimerActivity"></activity>
+        <activity android:name=".AsyncActivity"></activity>
+        <activity android:name=".TimerActivity" />
         <activity android:name=".Progress" />
         <activity android:name=".MainActivity">
             <intent-filter>
