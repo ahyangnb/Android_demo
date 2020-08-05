@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "Q1";
 
     private Button bt1;
-    private Button bt_Web;
+    private Button bt_web;
     private Button bt_constraint;
     private Button bt_dialog;
     private Button bt_this_dialog;
@@ -45,38 +45,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        bt_Web.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, WebViewActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        bt_constraint.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Constraint.class);
-                startActivity(intent);
-            }
-        });
-
-        bt_dialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DialogActivati.class);
-                startActivity(intent);
-            }
-        });
-
-        bt_this_dialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ThisDialog.class);
-                startActivity(intent);
-            }
-        });
+        bt_web.setOnClickListener(new ClickHandle());
+        bt_constraint.setOnClickListener(new ClickHandle());
+        bt_dialog.setOnClickListener(new ClickHandle());
+        bt_this_dialog.setOnClickListener(new ClickHandle());
         bt_listView.setOnClickListener(new ClickHandle());
         bt_progress.setOnClickListener(new ClickHandle());
         bt_net.setOnClickListener(new ClickHandle());
@@ -90,6 +62,22 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             Intent intent = new Intent();
             switch (v.getId()) {
+                case R.id.bt1:
+                    intent = new Intent(MainActivity.this, RecyClerView.class);
+                    startActivityForResult(intent, 1000);
+                    break;
+                case R.id.bt_web:
+                    intent = new Intent(MainActivity.this, WebViewActivity.class);
+                    break;
+                case R.id.bt_constraint:
+                    intent = new Intent(MainActivity.this, Constraint.class);
+                    break;
+                case R.id.bt_dialog:
+                    intent = new Intent(MainActivity.this, DialogActivati.class);
+                    break;
+                case R.id.bt_this_dialog:
+                    intent = new Intent(MainActivity.this, ThisDialog.class);
+                    break;
                 case R.id.bt_progress:
                     intent = new Intent(MainActivity.this, Progress.class);
                     break;
@@ -109,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                     intent = new Intent(MainActivity.this, TimerActivity.class);
                     break;
             }
-            if (v.getId() != R.id.bt_net) {
+            if (v.getId() != R.id.bt_net && v.getId() != R.id.bt1) {
                 startActivity(intent);
             }
 
@@ -155,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void findId() {
         bt1 = findViewById(R.id.bt1);
-        bt_Web = findViewById(R.id.bt_web);
+        bt_web = findViewById(R.id.bt_web);
         bt_constraint = findViewById(R.id.bt_constraint);
         bt_dialog = findViewById(R.id.bt_dialog);
         bt_this_dialog = findViewById(R.id.bt_this_dialog);
