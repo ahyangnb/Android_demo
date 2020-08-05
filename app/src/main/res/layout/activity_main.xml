@@ -69,4 +69,11 @@
         android:textAllCaps="false"
         android:text="计时器" />
 
+    <Button
+        android:id="@+id/bt_async"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="AsyncTask异步任务" />
+
 </LinearLayout>

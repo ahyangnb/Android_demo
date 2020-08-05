@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bt_progress;
     private Button bt_net;
     private Button bt_timer;
+    private Button bt_async;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
         bt_progress = findViewById(R.id.bt_progress);
         bt_net = findViewById(R.id.bt_net);
         bt_timer = findViewById(R.id.bt_timer);
+        bt_async = findViewById(R.id.bt_async);
     }
 
     @Override
