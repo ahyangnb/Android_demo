@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="ListViewActivity" />
+        android:text="列表视图和请求接口" />
     <Button
         android:id="@+id/bt_progress"
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="NetWork" />
+        android:text="请求接口" />
 
     <Button
         android:id="@+id/bt_timer"

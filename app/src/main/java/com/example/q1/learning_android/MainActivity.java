@@ -131,13 +131,19 @@ public class MainActivity extends AppCompatActivity {
                 byte[] b = new byte[1024];
                 int len = 0;
                 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                while(((len = in.read(b))> -1)){
-                    byteArrayOutputStream.write(b,0,len);
+                while (((len = in.read(b)) > -1)) {
+                    byteArrayOutputStream.write(b, 0, len);
                 }
 
                 final String msg = new String(byteArrayOutputStream.toByteArray());
 
-                Log.d(TAG, "成功" +  msg);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "成功" + msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
+                Log.d(TAG, "成功" + msg);
             } else {
                 Log.e(TAG, "失败");
             }
