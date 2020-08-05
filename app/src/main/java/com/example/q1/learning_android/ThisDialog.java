@@ -14,50 +14,48 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ThisDialog extends AppCompatActivity {
 
-    private Button oneDialog;
-    private Button tow_dialog;
-    private Button three_dialog;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_this_dialog);
-        oneDialog = findViewById(R.id.one_dialog);
-        tow_dialog = findViewById(R.id.tow_dialog);
-        three_dialog = findViewById(R.id.three_dialog);
 
-        oneDialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        //寻找组件id并绑定
+        Button oneDialog = findViewById(R.id.one_dialog);
+        Button tow_dialog = findViewById(R.id.tow_dialog);
+        Button three_dialog = findViewById(R.id.three_dialog);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ThisDialog.this);
-                builder.setNegativeButton("取消", null);
-                builder.setTitle("这是标题");
-                builder.setMessage("你确定到推出程序吗");
-                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-                builder.show();
+        //注册监听
+        oneDialog.setOnClickListener(new InnerOnClickListener());
+        tow_dialog.setOnClickListener(new InnerOnClickListener());
+        three_dialog.setOnClickListener(new InnerOnClickListener());
+    }
+
+    private class InnerOnClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            switch(v.getId()){
+                case R.id.one_dialog:
+                    AlertDialog.Builder builder = new AlertDialog.Builder(ThisDialog.this);
+                    builder.setNegativeButton("取消", null);
+                    builder.setTitle("这是标题");
+                    builder.setMessage("你确定到推出程序吗");
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+                    builder.show();
+                    break;
+                case R.id.tow_dialog:
+                    MyDialog myDialog = new MyDialog(ThisDialog.this);
+                    myDialog.show();
+                    break;
+                case R.id.three_dialog:
+                    showPopWindow(findViewById(R.id.three_dialog));
+                    break;
             }
-        });
-
-        tow_dialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MyDialog myDialog = new MyDialog(ThisDialog.this);
-                myDialog.show();
-            }
-        });
-
-        three_dialog.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopWindow(findViewById(R.id.three_dialog));
-            }
-        });
+        }
     }
 
     private void showPopWindow(View view) {
