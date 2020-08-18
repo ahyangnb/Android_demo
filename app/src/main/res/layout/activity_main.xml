@@ -26,6 +26,20 @@
         android:text="webView" />
 
     <Button
+        android:id="@+id/bt_theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="更改Theme" />
+
+    <Button
+        android:id="@+id/bt_themeTow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="更改ThemeTow" />
+
+    <Button
         android:id="@+id/bt_constraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -75,5 +89,6 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="AsyncTask异步任务" />
+
 
 </LinearLayout>

@@ -1,9 +1,12 @@
 package com.example.q1.learning_android;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private Button bt_net;
     private Button bt_timer;
     private Button bt_async;
+    private Button bt_theme;
+    private Button bt_themeTow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         bt_net.setOnClickListener(new ClickHandle());
         bt_timer.setOnClickListener(new ClickHandle());
         bt_async.setOnClickListener(new ClickHandle());
+        bt_theme.setOnClickListener(new ClickHandle());
+        bt_themeTow.setOnClickListener(new ClickHandle());
 
     }
 
@@ -62,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent();
+
+            //获取窗口区域
+            Window window = MainActivity.this.getWindow();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            }
+
             switch (v.getId()) {
                 case R.id.bt1:
                     intent = new Intent(MainActivity.this, RecyClerView.class);
@@ -100,8 +114,18 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.bt_async:
                     intent = new Intent(MainActivity.this, AsyncActivity.class);
                     break;
+                case R.id.bt_theme:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                    }
+                    break;
+                case R.id.bt_themeTow:
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    }
+                    break;
             }
-            if (v.getId() != R.id.bt_net && v.getId() != R.id.bt1) {
+            if (v.getId() != R.id.bt_net && v.getId() != R.id.bt1 && v.getId() != R.id.bt_theme && v.getId() != R.id.bt_themeTow) {
                 startActivity(intent);
             }
 
@@ -156,6 +180,8 @@ public class MainActivity extends AppCompatActivity {
         bt_net = findViewById(R.id.bt_net);
         bt_timer = findViewById(R.id.bt_timer);
         bt_async = findViewById(R.id.bt_async);
+        bt_theme = findViewById(R.id.bt_theme);
+        bt_themeTow = findViewById(R.id.bt_themeTow);
     }
 
     @Override
