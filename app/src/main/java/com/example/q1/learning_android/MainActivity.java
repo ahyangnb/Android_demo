@@ -1,6 +1,8 @@
 package com.example.q1.learning_android;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     String TAG = "Q1";
 
     private Button bt1;
+    private Button bt2;
     private Button bt_web;
     private Button bt_constraint;
     private Button bt_dialog;
@@ -47,6 +50,24 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, RecyClerView.class);
                 startActivityForResult(intent, 1000);
+
+            }
+        });
+        bt2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PackageInfo packageInfo;
+                String packageName = "com.xxx.android";
+                try {
+                    packageInfo = MainActivity.this.getPackageManager().getPackageInfo(packageName, 0);
+                } catch (PackageManager.NameNotFoundException e) {
+                    packageInfo = null;
+                }
+                if (packageInfo == null) {
+                    Log.d(TAG, "没有安装");
+                } else {
+                    Log.d(TAG, "已经安装");
+                }
 
             }
         });
@@ -171,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void findId() {
         bt1 = findViewById(R.id.bt1);
+        bt2 = findViewById(R.id.bt2);
         bt_web = findViewById(R.id.bt_web);
         bt_constraint = findViewById(R.id.bt_constraint);
         bt_dialog = findViewById(R.id.bt_dialog);
