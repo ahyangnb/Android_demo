@@ -4,6 +4,7 @@
     package="com.example.q1.learning_android">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -17,21 +18,39 @@
         <activity android:name=".AsyncActivity"></activity>
         <activity android:name=".TimerActivity" />
         <activity android:name=".Progress" />
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecyClerView" />
-        <activity android:name=".WebViewActivity" />
-        <activity android:name=".Constraint" />
-        <activity android:name=".DialogActivati" />
-        <activity android:name=".ThisDialog" />
-        <activity android:name=".MyDialog" />
-        <activity android:name=".ListViewActivity" />
-        <activity android:name=".ViewPageActivity" />
+        <activity
+            android:name=".RecyClerView"
+            android:exported="true" />
+        <activity
+            android:name=".WebViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Constraint"
+            android:exported="true" />
+        <activity
+            android:name=".DialogActivati"
+            android:exported="true" />
+        <activity
+            android:name=".ThisDialog"
+            android:exported="true" />
+        <activity
+            android:name=".MyDialog"
+            android:exported="true" />
+        <activity
+            android:name=".ListViewActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ViewPageActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

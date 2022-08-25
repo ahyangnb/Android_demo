@@ -22,6 +22,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.lzf.easyfloat.EasyFloat;
+
 public class MainActivity extends AppCompatActivity {
     String TAG = "Q1";
 
@@ -89,6 +91,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View v) {
+
+            if (v.getId() == R.id.bt_async) {
+                EasyFloat.with(MainActivity.this).setLayout(R.layout.item).show();
+                return;
+            }
+
             Intent intent = new Intent();
 
             //获取窗口区域
