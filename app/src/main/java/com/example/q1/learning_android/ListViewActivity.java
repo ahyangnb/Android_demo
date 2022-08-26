@@ -1,10 +1,12 @@
 package com.example.q1.learning_android;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -26,10 +28,12 @@ import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.q1.learning_android.widget.MyListView;
+
 public class ListViewActivity extends AppCompatActivity {
     String TAG = "Q1";
 
-    private ListView list1;
+    private MyListView list1;
 
     final Handler handler = new Handler() {
         @Override
@@ -44,6 +48,21 @@ public class ListViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_view);
         list1 = findViewById(R.id.list1);
+
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            list1.setOnScrollListener(new AbsListView.OnScrollListener() {
+//                @Override
+//                public void onScrollStateChanged(AbsListView view, int scrollState) {
+//                    Log.d("Q1", "滑动scrollY:" + list1.getScrollY() + "，" +list1.getVerticalScrollbarPosition());
+//                }
+//
+//                @Override
+//                public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+////                    Log.d("Q1", "滑动scrollY:" + scrollY + "，" + "scrollX:" + scrollX + "，" + "oldScrollX:" + oldScrollX + "，" + "oldScrollY:" + oldScrollY);
+//
+//                }
+//            });
+//        }
 
         Button bt_param = findViewById(R.id.bt_param);
         bt_param.setOnClickListener(

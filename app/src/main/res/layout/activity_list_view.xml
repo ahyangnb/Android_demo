@@ -14,11 +14,11 @@
         android:layout_gravity="center"
         android:text="开始解析" />
 
-    <ListView
+    <com.example.q1.learning_android.widget.MyListView
         android:id="@+id/list1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="300dp"
+        android:layout_height="120dp">
 
-    </ListView>
+    </com.example.q1.learning_android.widget.MyListView>
 
 </LinearLayout>

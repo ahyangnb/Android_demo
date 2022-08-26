@@ -6,23 +6,33 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.q1.learning_android.widget.MyListView;
 import com.lzf.easyfloat.EasyFloat;
+import com.lzf.easyfloat.enums.SidePattern;
+import com.lzf.easyfloat.interfaces.OnFloatAnimator;
+import com.lzf.easyfloat.interfaces.OnFloatCallbacks;
 
 public class MainActivity extends AppCompatActivity {
     String TAG = "Q1";
@@ -87,13 +97,97 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+        class Animator implements OnFloatAnimator {
+
+        @Nullable
+        @Override
+        public android.animation.Animator enterAnim(@NonNull View view, @NonNull WindowManager.LayoutParams layoutParams, @NonNull WindowManager windowManager, @NonNull SidePattern sidePattern) {
+//            layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+//                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE ;//| WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE| WindowManager.LayoutParams.FLAG_SPLIT_TOUCH| WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+
+            return null;
+        }
+
+        @Nullable
+        @Override
+        public android.animation.Animator exitAnim(@NonNull View view, @NonNull WindowManager.LayoutParams layoutParams, @NonNull WindowManager windowManager, @NonNull SidePattern sidePattern) {
+//            layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+//                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;//
+
+            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE| WindowManager.LayoutParams.FLAG_SPLIT_TOUCH| WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+
+            return null;
+        }
+    }
     private class ClickHandle implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
 
             if (v.getId() == R.id.bt_async) {
-                EasyFloat.with(MainActivity.this).setLayout(R.layout.item).show();
+                EasyFloat.with(MainActivity.this).setLayout(R.layout.float_layout_item)
+                        .setAnimator(new Animator())
+                        .registerCallbacks(
+                                new OnFloatCallbacks() {
+                                    @Override
+                                    public void touchEvent(View view, MotionEvent motionEvent) {
+
+                                    }
+
+                                    @Override
+                                    public void show(View view) {
+
+                                    }
+
+                                    @Override
+                                    public void hide(View view) {
+
+                                    }
+
+                                    @Override
+                                    public void dragEnd(View view) {
+
+                                    }
+
+                                    @Override
+                                    public void drag(View view, MotionEvent motionEvent) {
+
+                                    }
+
+                                    @Override
+                                    public void dismiss() {
+
+                                    }
+
+                                    @Override
+                                    public void createdResult(boolean b, String s, View view) {
+                                        MyListView list1 = view.findViewById(R.id.list1);
+//                                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                                            list1.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+//                                                @Override
+//                                                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+//                                                    Log.d("Q1", "滑动scrollY:" + scrollY + "，" + "scrollX:" + scrollX + "，" + "oldScrollX:" + oldScrollX + "，" + "oldScrollY:" + oldScrollY);
+//                                                }
+//                                            });
+//                                        }
+                                        List<Map<String, Object>> data = new ArrayList<>();
+                                        for (int i = 0; i < 10; i++) {
+                                            HashMap<String, Object> map = new HashMap<>();
+                                            map.put("id", "id" + i);
+                                            map.put("name", "name" + i);
+                                            data.add(map);
+                                        }
+
+                                        String[] from = {"id", "name"};
+                                        int[] to = {R.id.id, R.id.name};
+                                        final SimpleAdapter simpleAdapter = new SimpleAdapter(MainActivity.this, data, R.layout.item, from, to);
+                                        list1.setAdapter(simpleAdapter);
+                                    }
+                                }
+                        ).show();
+
+
                 return;
             }
 
