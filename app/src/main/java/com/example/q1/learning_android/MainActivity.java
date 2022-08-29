@@ -1,5 +1,6 @@
 package com.example.q1.learning_android;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -154,14 +155,14 @@ public class MainActivity extends AppCompatActivity {
 //                                        }
 
 
-                                        MyListView list1 = view.findViewById(R.id.list1);
-
-                                        int top = list1.getTop();
-                                        float y = motionEvent.getY();
-
-                                        if(y >= top){
-                                            list1.scrollBy(0,(int) y - top);
-                                        }
+//                                        MyListView list1 = view.findViewById(R.id.list1);
+//
+//                                        int top = list1.getTop();
+//                                        float y = motionEvent.getY();
+//
+//                                        if(y >= top){
+//                                            list1.scrollBy(0,(int) y - top);
+//                                        }
 
 
 
@@ -201,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     }
 
+                                    @SuppressLint("ClickableViewAccessibility")
                                     @Override
                                     public void createdResult(boolean b, String s, View view) {
                                         MyListView list1 = view.findViewById(R.id.list1);
@@ -224,6 +226,15 @@ public class MainActivity extends AppCompatActivity {
 
                                         ChatListAdapter chatListAdapter = new ChatListAdapter(MainActivity.this, data);
                                         list1.setAdapter(chatListAdapter);
+                                        list1.setOnTouchListener(new View.OnTouchListener() {
+                                            @Override
+                                            public boolean onTouch(View v, MotionEvent event) {
+
+                                                EasyFloat.dragEnable(event.getAction() == MotionEvent.ACTION_UP);
+
+                                                return false;
+                                            }
+                                        });
 
                                         /// 默认适配器
 //                                        String[] from = {"id", "name"};
