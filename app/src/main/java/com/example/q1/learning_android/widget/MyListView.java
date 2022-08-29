@@ -1,5 +1,7 @@
 package com.example.q1.learning_android.widget;
 
+import static android.view.MotionEvent.ACTION_MOVE;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
@@ -29,7 +31,7 @@ public class MyListView extends ListView {
     }
 
 
-//    @Override
+    //    @Override
 //    public boolean onInterceptTouchEvent(MotionEvent ev) {
 //        return false;
 //    }
@@ -37,7 +39,18 @@ public class MyListView extends ListView {
 //    @SuppressLint("ClickableViewAccessibility")
 //    @Override
 //    public boolean onTouchEvent(MotionEvent ev) {
-//        Log.d("Q1","evev::"+ev.toString());
+//        Log.d("Q1", "evev::" + ev.toString());
+////        if (ev.getAction() == ACTION_MOVE) {
+////            scrollBy(0, (int) ev.getY());
+////        }
+//
+//        int top = getTop();
+//        float y = ev.getY();
+//
+//        if(y >= top){
+//                                            scrollBy(0,(int) y - top);
+//        }
+//
 //        return true;
 //
 //    }

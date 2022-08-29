@@ -28,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.q1.learning_android.adapter.ChatListAdapter;
 import com.example.q1.learning_android.widget.MyListView;
 import com.lzf.easyfloat.EasyFloat;
 import com.lzf.easyfloat.enums.SidePattern;
@@ -97,14 +98,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        class Animator implements OnFloatAnimator {
+    class Animator implements OnFloatAnimator {
 
         @Nullable
         @Override
         public android.animation.Animator enterAnim(@NonNull View view, @NonNull WindowManager.LayoutParams layoutParams, @NonNull WindowManager windowManager, @NonNull SidePattern sidePattern) {
 //            layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
 //                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE ;//| WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
-            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE| WindowManager.LayoutParams.FLAG_SPLIT_TOUCH| WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+
+            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+
+//            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM& WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
             return null;
         }
@@ -115,11 +119,14 @@ public class MainActivity extends AppCompatActivity {
 //            layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
 //                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;//
 
-            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM| WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE| WindowManager.LayoutParams.FLAG_SPLIT_TOUCH| WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+
+//            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM& WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
             return null;
         }
     }
+
     private class ClickHandle implements View.OnClickListener {
 
         @Override
@@ -132,7 +139,41 @@ public class MainActivity extends AppCompatActivity {
                                 new OnFloatCallbacks() {
                                     @Override
                                     public void touchEvent(View view, MotionEvent motionEvent) {
+//                                        float x = motionEvent.getX();
+//                                        motionEvent.getr
 
+//                                        float y = motionEvent.getY();
+//                                        int action = motionEvent.getAction();
+//                                        if (x == 0 && y != 0) {
+//                                            MyListView list1 = view.findViewById(R.id.list1);
+//                                            list1.scrollBy(0, (int) motionEvent.getY());
+//                                        }else
+//
+//                                        if (x != 0 && y == 0) {
+//                                            drag(view, motionEvent);
+//                                        }
+
+
+                                        MyListView list1 = view.findViewById(R.id.list1);
+
+                                        int top = list1.getTop();
+                                        float y = motionEvent.getY();
+
+                                        if(y >= top){
+                                            list1.scrollBy(0,(int) y - top);
+                                        }
+
+
+
+//                                        list1.getY();
+
+//                                        Log.d("666","list raw y" + list1.getTop());
+//                                        Log.d("666","motionEvent raw y" + motionEvent.getY());
+
+
+
+
+//                                        list1.scrollBy(0, (int) motionEvent.getY());
                                     }
 
                                     @Override
@@ -179,10 +220,16 @@ public class MainActivity extends AppCompatActivity {
                                             data.add(map);
                                         }
 
-                                        String[] from = {"id", "name"};
-                                        int[] to = {R.id.id, R.id.name};
-                                        final SimpleAdapter simpleAdapter = new SimpleAdapter(MainActivity.this, data, R.layout.item, from, to);
-                                        list1.setAdapter(simpleAdapter);
+                                        /// 自定义适配器
+
+                                        ChatListAdapter chatListAdapter = new ChatListAdapter(MainActivity.this, data);
+                                        list1.setAdapter(chatListAdapter);
+
+                                        /// 默认适配器
+//                                        String[] from = {"id", "name"};
+//                                        int[] to = {R.id.id, R.id.name};
+//                                        final SimpleAdapter simpleAdapter = new SimpleAdapter(MainActivity.this, data, R.layout.item, from, to);
+//                                        list1.setAdapter(simpleAdapter);
                                     }
                                 }
                         ).show();
