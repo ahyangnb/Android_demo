@@ -12,6 +12,7 @@
 
     <com.example.q1.learning_android.widget.MyListView
         android:id="@+id/list1"
+        android:touchscreenBlocksFocus="true"
         android:layout_width="200dp"
         android:layout_height="280dp" />
 

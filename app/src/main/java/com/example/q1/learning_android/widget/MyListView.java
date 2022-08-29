@@ -54,10 +54,10 @@ public class MyListView extends ListView {
 //        return true;
 //
 //    }
-
+//
 //    @Override
 //    public boolean dispatchTouchEvent(MotionEvent ev) {
-//        Log.d("Q1","dispatchTouchEvent:::"+ev.toString());
+//        Log.d("Q1", "dispatchTouchEvent:::" + ev.toString());
 //        return true;
 //    }
 
