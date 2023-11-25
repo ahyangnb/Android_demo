@@ -107,7 +107,12 @@ public class MainActivity extends AppCompatActivity {
 //            layoutParams.flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
 //                    | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE ;//| WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
 
-            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH | WindowManager.LayoutParams.FLAG_DITHER | WindowManager.LayoutParams.FLAG_SECURE;
+            layoutParams.setTitle("com.miui.screenrecorder");
+
+            /// 隐藏悬浮窗【小米，绘制伪装悬浮窗防录屏，yumi绘制模板】
+//            window.addFlags(WindowManager.LayoutParams.FLAG_SECURE | WindowManager.LayoutParams.FLAG_DITHER);
+//            window.setTitle("com.miui.screenrecorder");
 
 //            layoutParams.flags = WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM& WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE;
 
@@ -255,6 +260,9 @@ public class MainActivity extends AppCompatActivity {
             Window window = MainActivity.this.getWindow();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+                /// 隐藏悬浮窗另一种写法
+//                window.addFlags( 8192 | 4096);
             }
 
             switch (v.getId()) {
